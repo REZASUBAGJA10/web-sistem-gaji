@@ -12,7 +12,7 @@
         <div class="mb-3">
             <label>Jabatan</label>
             <select name="id_jabatan" class="form-control" required>
-                <option value="">-- Pilih Jabatan --</option>
+                <option value="">Pilih Jabatan</option>
                 <?php
                 $jabatan = mysqli_query($koneksi, "SELECT * FROM jabatan");
                 while ($j = mysqli_fetch_assoc($jabatan)) {
