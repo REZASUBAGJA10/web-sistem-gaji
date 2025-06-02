@@ -45,7 +45,7 @@ if (empty($data['foto']) || !file_exists($fotoPath)) {
                     <a href="karyawan.php" class="btn btn-secondary mt-3">← Kembali ke Daftar Karyawan</a>
                 </div>
                 <div class="col-md-4 text-center">
-                    <img src="<?= $fotoPath ?>" class="rounded-circle mt-2 mb-2" width="200" height="20 0" style="object-fit: cover;">
+                    <img src="<?= $fotoPath ?>" class="rounded-circle mt-2 mb-2" width="200" height="200" style="object-fit: cover;">
                 </div>
             </div>
         </div>
