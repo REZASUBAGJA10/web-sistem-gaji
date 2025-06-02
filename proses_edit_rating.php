@@ -1,20 +1,18 @@
 <?php
 include 'config/koneksi.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_POST['id'];
     $nilai_rating = $_POST['nilai_rating'];
     $bonus_persen = $_POST['bonus_persen'];
 
-    $query = mysqli_query($koneksi, "UPDATE rating SET nilai_rating='$nilai_rating', bonus_persen='$bonus_persen' WHERE id=$id");
-
-    if ($query) {
-        echo "<script>alert('Data rating berhasil diperbarui'); window.location='rating.php';</script>";
+    // Update rating dan bonus di database
+    $query = "UPDATE rating SET nilai_rating = '$nilai_rating', bonus_persen = '$bonus_persen' WHERE id = $id";
+    
+    if (mysqli_query($koneksi, $query)) {
+        header("Location: rating.php"); // Redirect ke halaman daftar rating setelah berhasil
     } else {
-        echo "<script>alert('Gagal memperbarui data'); history.back();</script>";
+        echo "Error: " . mysqli_error($koneksi);
     }
-} else {
-    header("Location: rating.php");
-    exit;
 }
 ?>

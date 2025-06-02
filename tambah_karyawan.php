@@ -4,8 +4,9 @@ $jabatan_query = mysqli_query($koneksi, "SELECT * FROM jabatan");
 $rating_query = mysqli_query($koneksi, "SELECT * FROM rating");
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Tambah Karyawan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
@@ -71,7 +72,7 @@ $rating_query = mysqli_query($koneksi, "SELECT * FROM rating");
             <select name="id_rating" class="form-control" required>
                 <option value="">Pilih Rating</option>
                 <?php while ($rating = mysqli_fetch_assoc($rating_query)) { ?>
-                    <option value="<?= $rating['id'] ?>"><?= $rating['nilai_rating'] ?> - <?= $rating['bonus_persen'] ?>%</option>
+                    <option value="<?= $rating['id'] ?>"><?= $rating['nilai_rating'] ?></option>
                 <?php } ?>
             </select>
         </div>

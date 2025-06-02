@@ -12,12 +12,18 @@
     <form method="POST" action="proses_tambah_rating.php">
         <div class="mb-3">
             <label class="form-label" for="nilai_rating">Nilai Rating</label>
-            <input type="text" name="nilai_rating" class="form-control" required>
+            <select name="nilai_rating" class="form-control" required>
+                <option value="1">1 ★</option>
+                <option value="2">2 ★★</option>
+                <option value="3">3 ★★★</option>
+                <option value="4">4 ★★★★</option>
+                <option value="5">5 ★★★★★</option>
+            </select>
         </div>
 
         <div class="mb-3">
             <label class="form-label" for="bonus_persen">Bonus (%)</label>
-            <input type="number" name="bonus_persen" class="form-control" required>
+            <input type="number" name="bonus_persen" class="form-control" min="0" max="100" required>
         </div>
 
         <div class="d-flex justify-content-between">
@@ -25,6 +31,6 @@
             <a href="rating.php" class="btn btn-secondary">Kembali</a>
         </div>
     </form>
-</div>
+
 </body>
 </html>

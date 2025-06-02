@@ -13,16 +13,16 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
     <meta charset="UTF-8">
     <title>Dashboard - Sistem Gaji</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
-=======
+
+
 
   
->>>>>>> f0c816819b1075de9808c8d15b1dd235426345be
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <style>
-<<<<<<< HEAD
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -155,7 +155,7 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
                     display: block;
                 }
             }
->>>>>>> f0c816819b1075de9808c8d15b1dd235426345be
+
     </style>
 </head>
 <body>
@@ -321,13 +321,11 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
     });
 </script>
 
+
+
+
+
 </html>
-<<<<<<< HEAD
-=======
 
 
 
-
-
-  
->>>>>>> f0c816819b1075de9808c8d15b1dd235426345be
