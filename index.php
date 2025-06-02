@@ -74,7 +74,7 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
             background-color: #0d6efd;
             height: 100%;
         }
-=======
+
             body {
                 margin: 0;
                 min-height: 100vh;
