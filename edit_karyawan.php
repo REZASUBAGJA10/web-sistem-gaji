@@ -1,10 +1,13 @@
 <?php
 include 'config/koneksi.php';
 
+// Ambil data karyawan berdasarkan id
 $id = $_GET['id'];
-$data = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM karyawan WHERE id = $id"));
+$query = "SELECT * FROM karyawan WHERE id = $id";
+$result = mysqli_query($koneksi, $query);
+$data = mysqli_fetch_assoc($result);
 
-
+// Query untuk jabatan dan rating
 $jabatan = mysqli_query($koneksi, "SELECT * FROM jabatan");
 $rating = mysqli_query($koneksi, "SELECT * FROM rating");
 ?>
@@ -19,28 +22,33 @@ $rating = mysqli_query($koneksi, "SELECT * FROM rating");
 <body class="container mt-5" style="max-width: 700px;">
     <h2 class="text-center mb-4">Edit Data Karyawan</h2>
 
-    <form method="POST" action="proses_edit_karyawan.php">
+    <!-- Form untuk edit karyawan -->
+    <form method="POST" action="proses_edit_karyawan.php" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?= $data['id'] ?>">
 
         <div class="mb-3">
             <label class="form-label">Nama</label>
             <input type="text" name="nama" class="form-control" value="<?= $data['nama'] ?>" required>
         </div>
-        
+
         <div class="mb-3">
             <label class="form-label">Alamat</label>
             <textarea name="alamat" class="form-control" required><?= $data['alamat'] ?></textarea>
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Umur</label>
-            <input type="number" name="umur" class="form-control" value="<?= $data['umur'] ?>" required>
+            <label class="form-label">Divisi</label>
+            <select name="divisi" class="form-select" required>
+                <option value="IT" <?= $data['divisi'] == 'IT' ? 'selected' : '' ?>>IT</option>
+                <option value="Marketing" <?= $data['divisi'] == 'Marketing' ? 'selected' : '' ?>>Marketing</option>
+                <option value="Finance" <?= $data['divisi'] == 'Finance' ? 'selected' : '' ?>>Finance</option>
+                <option value="HRD" <?= $data['divisi'] == 'HRD' ? 'selected' : '' ?>>HRD</option>
+            </select>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Jenis Kelamin</label>
             <select name="jenis_kelamin" class="form-control" required>
-                <option value="">Pilih</option>
                 <option value="Laki-laki" <?= $data['jenis_kelamin'] == 'Laki-laki' ? 'selected' : '' ?>>Laki-laki</option>
                 <option value="Perempuan" <?= $data['jenis_kelamin'] == 'Perempuan' ? 'selected' : '' ?>>Perempuan</option>
             </select>
@@ -49,9 +57,8 @@ $rating = mysqli_query($koneksi, "SELECT * FROM rating");
         <div class="mb-3">
             <label class="form-label">Status</label>
             <select name="status" class="form-control" required>
-                <option value="">Pilih</option>
                 <option value="Aktif" <?= $data['status'] == 'Aktif' ? 'selected' : '' ?>>Aktif</option>
-                <option value="Nonaktif" <?= $data['status'] == 'Nonaktif' ? 'selected' : '' ?>> Nonaktif</option>
+                <option value="Nonaktif" <?= $data['status'] == 'Nonaktif' ? 'selected' : '' ?>>Nonaktif</option>
             </select>
         </div>
 
@@ -79,12 +86,23 @@ $rating = mysqli_query($koneksi, "SELECT * FROM rating");
             </select>
         </div>
 
+        <div class="mb-3">
+            <label class="form-label">Foto (opsional)</label>
+            <div class="mb-2">
+                <?php if ($data['foto'] && file_exists('uploads/' . $data['foto'])): ?>
+                    <img src="uploads/<?= $data['foto'] ?>" alt="Foto Karyawan" class="img-fluid" style="max-width: 150px;">
+                <?php else: ?>
+                    <img src="uploads/default.png" alt="Foto Karyawan" class="img-fluid" style="max-width: 150px;">
+                <?php endif; ?>
+            </div>
+            <input type="file" name="foto" class="form-control">
+        </div>
+
         <div class="d-flex justify-content-between">
             <button type="submit" class="btn btn-primary">Simpan Karyawan</button>
             <a href="karyawan.php" class="btn btn-secondary">← Kembali</a>
         </div>
     </form>
-
 </div>
 
 </body>

@@ -11,7 +11,7 @@ $rating_query = mysqli_query($koneksi, "SELECT * FROM rating");
 </head>
 <body class="container mt-5" style="max-width: 700px;">
     <h2 class="text-center mb-4">Tambah Karyawan</h2>
-    <form method="POST" action="proses_tambah_karyawan.php">
+    <form method="POST" action="proses_tambah_karyawan.php" enctype="multipart/form-data">
         <div class="mb-3">
             <label class="form-label">Nama</label>
             <input type="text" name="nama" class="form-control" required>
@@ -20,6 +20,17 @@ $rating_query = mysqli_query($koneksi, "SELECT * FROM rating");
         <div class="mb-3">
             <label class="form-label">Alamat</label>
             <textarea name="alamat" class="form-control" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Divisi</label>
+            <select name="divisi" class="form-select" required>
+                <option value="">Pilih Divisi</option>
+                <option value="IT">IT</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Finance">Finance</option>
+                <option value="HRD">HRD</option>
+            </select>
         </div>
 
         <div class="mb-3">
@@ -41,7 +52,7 @@ $rating_query = mysqli_query($koneksi, "SELECT * FROM rating");
             <select name="status" class="form-control" required>
                 <option value="">Pilih Status</option>
                 <option value="Aktif">Aktif</option>
-                <option value="Tidak Aktif">Tidak Aktif</option>
+                <option value="NonAktif">NonAktif</option>
             </select>
         </div>
 
@@ -63,6 +74,11 @@ $rating_query = mysqli_query($koneksi, "SELECT * FROM rating");
                     <option value="<?= $rating['id'] ?>"><?= $rating['nilai_rating'] ?> - <?= $rating['bonus_persen'] ?>%</option>
                 <?php } ?>
             </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Foto (opsional)</label>
+            <input type="file" name="foto" class="form-control">
         </div>
 
         <div class="d-flex justify-content-between">
