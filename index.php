@@ -13,10 +13,16 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
     <meta charset="UTF-8">
     <title>Dashboard - Sistem Gaji</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
+=======
+
+  
+>>>>>>> f0c816819b1075de9808c8d15b1dd235426345be
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <style>
+<<<<<<< HEAD
         body {
             margin: 0;
             min-height: 100vh;
@@ -68,6 +74,88 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
             background-color: #0d6efd;
             height: 100%;
         }
+=======
+            body {
+                margin: 0;
+                min-height: 100vh;
+                background-color: #f5f7fa;
+            }
+            .sidebar {
+                background-color: #343a40;
+                color: white;
+                padding: 20px;
+                height: 100vh;
+                position: fixed;
+                width: 250px;
+                top: 0;
+                left: 0;
+                z-index: 1050;
+                transition: transform 0.3s ease-in-out;
+            }
+            .sidebar h4 {
+                margin-bottom: 30px;
+            }
+            .sidebar a {
+                color: white;
+                text-decoration: none;
+                display: block;
+                padding: 10px 15px;
+                border-radius: 5px;
+            }
+            .sidebar a:hover,
+            .sidebar .active {
+                background-color: #0d6efd;
+            }
+
+            .main-content {
+                margin-left: 250px;
+                padding: 30px;
+                transition: margin-left 0.3s ease-in-out;
+            }
+
+            footer {
+                background-color: #f8f9fa;
+                text-align: center;
+                padding: 10px 0;
+                border-top: 1px solid #ddd;
+                position: fixed;
+                bottom: 0;
+                width: calc(100% - 250px);
+                margin-left: 250px;
+            }
+
+        
+            @media (max-width: 768px) {
+                .sidebar {
+                    transform: translateX(-100%);
+                }
+                .sidebar.active {
+                    transform: translateX(0);
+                }
+                .main-content {
+                    margin-left: 0;
+                    padding-top: 60px;
+                }
+                footer {
+                    width: 100%;
+                    margin-left: 0;
+                    position: relative;
+                }
+                .overlay {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 100%;
+                    background-color: rgba(0, 0, 0, 0.4);
+                    z-index: 1049;
+                }
+                .overlay.active {
+                    display: block;
+                }
+            }
+>>>>>>> f0c816819b1075de9808c8d15b1dd235426345be
     </style>
 </head>
 <body>
@@ -215,4 +303,31 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
 </script>
 
 </body>
+<div class="overlay" id="overlay"></div>
+
+<script>
+    const toggleBtn = document.getElementById('toggleSidebar');
+    const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('overlay');
+
+    toggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+</script>
+
 </html>
+<<<<<<< HEAD
+=======
+
+
+
+
+
+  
+>>>>>>> f0c816819b1075de9808c8d15b1dd235426345be
