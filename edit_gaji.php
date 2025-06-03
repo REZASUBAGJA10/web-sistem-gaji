@@ -1,16 +1,25 @@
-<?php include 'config/koneksi.php'; ?>
+<?php 
+include 'config/koneksi.php';
 
-<?php
-$id = $_GET['id'];
+$id = $_GET['id'] ?? null;
+
+        if (!$id) {
+            echo "<script>alert('ID tidak valid!'); window.location='gaji.php';</script>";
+            exit;
+        }
+
+        $query = mysqli_query($koneksi, "SELECT * FROM gaji WHERE id = $id");
+        if (!$query || mysqli_num_rows($query) == 0) {
+            echo "<script>alert('Data gaji tidak ditemukan!'); window.location='gaji.php';</script>";
+            exit;
+        }
+        $data = mysqli_fetch_assoc($query);
 
 
-$query = mysqli_query($koneksi, "SELECT * FROM gaji WHERE id = $id");
-$data = mysqli_fetch_assoc($query);
 
-
-$karyawan = mysqli_query($koneksi, "SELECT * FROM karyawan");
-$jabatan = mysqli_query($koneksi, "SELECT * FROM jabatan");
-?>
+        $karyawan = mysqli_query($koneksi, "SELECT * FROM karyawan");
+        $jabatan = mysqli_query($koneksi, "SELECT * FROM jabatan");
+        ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,17 +28,16 @@ $jabatan = mysqli_query($koneksi, "SELECT * FROM jabatan");
     <title>Edit Gaji Karyawan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
+<body class="container mt-5" style="max-width: 750px;">
 
-<div class="container mt-5">
-    <h2>Edit Gaji Karyawan</h2>
+    <h2 class="text-center mb-4">Edit Gaji Karyawan</h2>
 
     <form method="POST" action="proses_edit_gaji.php">
         <input type="hidden" name="id" value="<?= $data['id'] ?>">
 
         <div class="mb-3">
             <label for="id_karyawan" class="form-label">Karyawan</label>
-            <select name="id_karyawan" class="form-control" required>
+            <select name="id_karyawan" class="form-select" required>
                 <option value="">Pilih Karyawan</option>
                 <?php while ($row = mysqli_fetch_assoc($karyawan)) { ?>
                     <option value="<?= $row['id'] ?>" <?= $data['id_karyawan'] == $row['id'] ? 'selected' : '' ?>>
@@ -41,7 +49,7 @@ $jabatan = mysqli_query($koneksi, "SELECT * FROM jabatan");
 
         <div class="mb-3">
             <label for="id_jabatan" class="form-label">Jabatan</label>
-            <select name="id_jabatan" class="form-control" required>
+            <select name="id_jabatan" class="form-select" required>
                 <option value="">Pilih Jabatan</option>
                 <?php while ($row = mysqli_fetch_assoc($jabatan)) { ?>
                     <option value="<?= $row['id'] ?>" <?= $data['id_jabatan'] == $row['id'] ? 'selected' : '' ?>>
@@ -71,11 +79,13 @@ $jabatan = mysqli_query($koneksi, "SELECT * FROM jabatan");
             <input type="number" name="jam_lembur" class="form-control" value="<?= $data['jam_lembur'] ?>" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Simpan Gaji</button>
-        <a href="gaji.php" class="btn btn-secondary">Kembali</a>
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            <a href="gaji.php" class="btn btn-secondary">← Kembali</a>
+        </div>
     </form>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>

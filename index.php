@@ -2,7 +2,7 @@
 include 'config/koneksi.php';
 $current_page = basename($_SERVER['PHP_SELF']);
 
-// Hitung total data
+
 $totalKaryawan = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as total FROM karyawan"))['total'];
 $totalJabatan = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as total FROM jabatan"))['total'];
 $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as total FROM rating"))['total'];
@@ -74,7 +74,7 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
             background-color: #0d6efd;
             height: 100%;
         }
-=======
+
             body {
                 margin: 0;
                 min-height: 100vh;
@@ -210,15 +210,15 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
     <h3 class="text-center mb-4">Karyawan Terbaru</h3>
     <div class="row">
         <?php
-        // Ambil semua karyawan
+      
         $query = "SELECT k.*, j.nama_jabatan, r.nilai_rating 
                   FROM karyawan k 
                   LEFT JOIN jabatan j ON k.id_jabatan = j.id 
                   LEFT JOIN rating r ON k.id_rating = r.id 
-                  ORDER BY k.created_at DESC"; // Hapus LIMIT untuk menampilkan semua karyawan
+                  ORDER BY k.created_at DESC"; 
         $result = mysqli_query($koneksi, $query);
 
-        // Cek apakah query berhasil
+      
         if (!$result) {
             die("Query Error: " . mysqli_error($koneksi));
         }
@@ -226,7 +226,7 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
         while ($data = mysqli_fetch_assoc($result)) {
             $fotoPath = "uploads/" . $data['foto'];
 
-            // Jika foto kosong atau tidak ada, gunakan foto default
+       
             if (empty($data['foto']) || !file_exists($fotoPath)) {
                 $fotoPath = $data['jenis_kelamin'] == 'Perempuan' ? "uploads/default_wanita.png" : "uploads/default_pria.png";
             }

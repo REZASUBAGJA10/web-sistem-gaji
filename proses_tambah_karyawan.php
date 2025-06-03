@@ -6,12 +6,12 @@ $alamat        = $_POST['alamat'];
 $divisi        = $_POST['divisi'];
 $umur          = $_POST['umur'];
 $jenis_kelamin = $_POST['jenis_kelamin'];
-$status        = $_POST['status']; // Pastikan status diambil
+$status        = $_POST['status']; 
 $id_jabatan    = $_POST['id_jabatan'];
 $id_rating     = $_POST['id_rating'];
 
-// Proses upload foto (foto default jika tidak diupload)
-$foto = 'default.png'; // default
+
+$foto = 'default.png'; 
 
 if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
     $nama_file   = $_FILES['foto']['name'];
@@ -28,7 +28,7 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
     $foto = $nama_baru;
 }
 
-// Query untuk insert data karyawan
+
 $query = "INSERT INTO karyawan 
     (nama, alamat, divisi, umur, jenis_kelamin, status, id_jabatan, id_rating, foto) 
     VALUES 

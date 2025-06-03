@@ -89,12 +89,12 @@
         <img src="<?= $fotoPath ?>" class="rounded-circle mx-auto d-block mt-2" width="150" height="150" style="object-fit: cover;">
         <div class=" fw-bold card-body text-start p-2">
           <h6><?= htmlspecialchars($data['nama']) ?></h6>
-          <p class="mb-1"><strong>Umur:</strong> <span class="badge bg-info text-dark"><?= $data['umur'] ?> Tahun</span></p>
-          <p class="mb-1"><strong>Alamat:</strong> <span class="badge bg-success"><?= htmlspecialchars($data['alamat']) ?></span></p>
-          <p class="mb-1"><strong>Divisi:</strong> <span class="badge bg-secondary"><?= htmlspecialchars($data['divisi']) ?></span></p>
+          <p class="mb-1"><strong>Umur:</strong> <span class="badge bg-primary"><?= $data['umur'] ?> Tahun</span></p>
+          <p class="mb-1"><strong>Alamat:</strong> <span class="badge bg-danger"><?= htmlspecialchars($data['alamat']) ?></span></p>
+          <p class="mb-1"><strong>Divisi:</strong> <span class="badge bg-dark-subtle text-dark"><?= htmlspecialchars($data['divisi']) ?></span></p>
 
           <p class="mb-1"><strong>Jenis Kelamin:</strong>
-            <span class="badge bg-<?= $data['jenis_kelamin'] == 'Laki-laki' ? 'primary' : ($data['jenis_kelamin'] == 'Perempuan' ? 'warning' : 'secondary') ?>">
+            <span class="badge bg-<?= $data['jenis_kelamin'] == 'Laki-laki' ? 'primary' : ($data['jenis_kelamin'] == 'Perempuan' ? 'warning text-dark' : 'secondary') ?>">
               <?= htmlspecialchars($data['jenis_kelamin']) ?>
             </span>
           </p>
@@ -106,7 +106,7 @@
           </p>
 
           <p class="mb-1"><strong>Jabatan:</strong>
-            <span class="badge bg-<?= $data['nama_jabatan'] == '' ? 'danger' : 'info' ?>">
+            <span class="text-dark badge bg-<?= $data['nama_jabatan'] == '' ? 'danger' : 'info' ?>">
               <?= htmlspecialchars($data['nama_jabatan']) ?>
             </span>
           </p>

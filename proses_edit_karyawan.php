@@ -11,13 +11,13 @@ $status = mysqli_real_escape_string($koneksi, $_POST['status']);
 $id_jabatan = (int)$_POST['id_jabatan'];
 $id_rating = (int)$_POST['id_rating'];
 
-// Cek foto lama
+
 $result = mysqli_query($koneksi, "SELECT foto FROM karyawan WHERE id = $id");
 $row = mysqli_fetch_assoc($result);
-$foto_lama = $row['foto']; // Foto lama
+$foto_lama = $row['foto']; 
 
-// Proses upload foto baru
-$foto = $foto_lama; // Default foto lama jika tidak ada foto baru
+
+$foto = $foto_lama; 
 
 if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
     $nama_file = $_FILES['foto']['name'];
@@ -34,7 +34,7 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
     $foto = $nama_baru;
 }
 
-// Query untuk update data
+
 $query = "UPDATE karyawan SET 
             nama = '$nama',
             alamat = '$alamat',
