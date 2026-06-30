@@ -136,16 +136,15 @@
   </div>
   
 
-  
-
   <div class="text-center mt-4">
     <a href="index.php" class="btn btn-secondary">← Kembali ke Dashboard</a>
     <a href="tambah_karyawan.php" class="btn btn-primary">+ Tambah Karyawan</a>
   </div>
 </div>
 
-<footer>
-  <small>© 2025 Sistem Gaji — by Reza</small>
+<footer class="text-end px-3 py-2 shadow-sm"
+        style="position: fixed; bottom: 0; right: 0; background-color: #f8f9fa; z-index: 1040; border-top-left-radius: 10px;">
+    <small>© <?= date('Y'); ?> Sistem Gaji — by Reza Subagja</small>
 </footer>
 
 </body>
