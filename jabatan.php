@@ -114,9 +114,9 @@
 </div>
 
 
-<footer class="w-100 px-4 py-2 text-end shadow-sm"
-        style="position: fixed; bottom: 0; left: 0; right: 0; background-color: #f8f9fa; z-index: 1040;">
-    <small>© 2025 Sistem Gaji — by Reza</small>
+<footer class="text-end px-3 py-2 shadow-sm"
+        style="position: fixed; bottom: 0; right: 0; background-color: #f8f9fa; z-index: 1040; border-top-left-radius: 10px;">
+    <small>© <?= date('Y'); ?> Sistem Gaji — by Reza Subagja</small>
 </footer>
 
 </body>
