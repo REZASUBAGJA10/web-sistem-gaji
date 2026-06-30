@@ -283,7 +283,7 @@ $totalRating = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT COUNT(*) as tot
 
 <footer class="text-end px-3 py-2 shadow-sm"
         style="position: fixed; bottom: 0; right: 0; background-color: #f8f9fa; z-index: 1040; border-top-left-radius: 10px;">
-    <small>© 2026 Sistem Gaji — by Reza Subagja</small>
+    <small>© <?= date('Y'); ?> Sistem Gaji — by Reza Subagja</small>
 </footer>
 
 <script>
